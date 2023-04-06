@@ -15,17 +15,23 @@ require ("../app/header.php");
         <p id="show-errors"></p>
     </form>
 
+    <script src="js/functions.js"></script>
     <script>
         $("#form-register").submit(function(e){
             e.preventDefault();
+            let username = $("#username").get(0).value
+            let password = $("#password").get(0).value
+            if (!validate(username, password)) {
+                return false
+            }
             $.ajax({
                 url: '/app/controllers/UserController.php',
                 type: 'post',
                 dataType: 'html',
                 data: {
                     request: 'register',
-                    username: $("#username").get(0).value,
-                    password: $("#password").get(0).value,
+                    username: username,
+                    password: password,
                 },
                 success: function(response){
                     response = JSON.parse(response)
