@@ -15,7 +15,6 @@ require ("../app/header.php");
         <p id="show-errors"></p>
     </form>
 
-    <script src="js/functions.js"></script>
     <script>
         $("#form-login").submit(function(e){
             e.preventDefault();
